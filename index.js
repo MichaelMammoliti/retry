@@ -21,13 +21,13 @@ const retry = (fn, {
           onRetry();
           attempt(...args);
 
-          return;
-        } else {
-          setTimeout(() => {
-            onRetry();
-            attempt(...args);
-          }, currentDelay);
+          return
         }
+        
+        setTimeout(() => {
+          onRetry();
+          attempt(...args);
+        }, currentDelay);
       } else {
         throw error;
       }
